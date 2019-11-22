@@ -1,0 +1,15 @@
+{
+    "version":"2018-10-06",
+    "labelingJobArn":"arn:aws:sagemaker:eu-central-1:797896594204:labeling-job/elite-criticism-task1-test-v002",
+    "dataObject":{
+        "source": "Find the report of my visit yesterday at the #SalonDelAgriculture, near our agricultural France. # SIA2016\nhttps://t.co/m8g9LrHzQM",
+        "metadata": {
+            "country": "france",
+            "party": "national front",
+            "type": "Leader",
+            "id_str": "705094441212620800",
+            "text": "Retrouvez le reportage de ma visite hier au #SalonDelAgriculture, auprès de notre France agricole. #SIA2016\nhttps://t.co/m8g9LrHzQM",
+            "quota_adj": 50
+        }
+    }
+}

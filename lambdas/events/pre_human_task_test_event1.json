@@ -1,0 +1,16 @@
+{
+    "version":"2018-10-06",
+    "labelingJobArn":"arn:aws:sagemaker:eu-central-1:797896594204:labeling-job/elite-criticism-task1-test-v002",
+    "dataObject":{
+        "source": "One has to weigh very carefully: what is possible in a \"\"state of law\"\" & amp; necessary. @sebastiankurz #Inmentrum #Radikalisierung # endangered # \u00d6VP",
+        "metadata": {
+            "country": "austria",
+            "party": "austrian people's party",
+            "type": "Party Account",
+            "id_str": "828357302000427010",
+            "text": "Man muss sehr genau abwiegen: Was ist in einem #Rechtsstaat möglich &amp; notwendig. @sebastiankurz #ImZentrum #Radikalisierung #Gefährder #ÖVP",
+            "quota_adj": 25
+        }
+    }
+}
+

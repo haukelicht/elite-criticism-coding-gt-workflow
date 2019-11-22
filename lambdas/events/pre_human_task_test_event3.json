@@ -1,0 +1,7 @@
+{
+    "version":"2018-10-06",
+    "labelingJobArn":"arn:aws:sagemaker:eu-central-1:797896594204:labeling-job/elite-criticism-task1-test-v002",
+    "dataObject":{
+    }
+}
+

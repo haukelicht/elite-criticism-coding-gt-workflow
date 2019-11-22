@@ -1,0 +1,10 @@
+{
+    "version": "2018-10-16",
+    "labelingJobArn":"arn:aws:sagemaker:eu-central-1:797896594204:labeling-job/elite-criticism-task1-test-v002",
+    "labelCategories": [],
+    "labelAttributeName": "annotations",
+    "roleArn" : "arn:aws:iam::797896594204:role/service-role/aws_lambda_s3_readonly",
+    "payload": {
+        "s3Uri": "s3://antielite-coding/rawdata/test/dev/test_consolidation_request4.json"
+    }
+}

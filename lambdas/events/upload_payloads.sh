@@ -1,0 +1,1 @@
+aws s3 cp --recursive payloads/*.json s3://antielite-coding/rawdata/test/dev/ --acl public-read

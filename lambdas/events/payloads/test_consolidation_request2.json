@@ -1,0 +1,1 @@
+[{"datasetObjectId": "0","dataObject": {"content": "This is a test consolidation request!"}, "annotations": [{"workerId": "public.us-east-1.#############1","annotationData": {"content": "{\"annotations\": \"{\\\"metadata\\\":\\\"Some JSON formatted metadata\\\",\\\"task2\\\":\\\"no\\\",\\\"task1\\\":\\\"no\\\",\\\"notes\\\":\\\"hello\\\"}\"}"}}]}]
