@@ -1,0 +1,13 @@
+!README.md
+
+# files
+job_overview_and_exp_costs.xlsx
+*-lock.json
+*yarn.lock
+*README.html
+*.DS_Store
+
+# folders
+s3/
+*node_modules/
+*build/
