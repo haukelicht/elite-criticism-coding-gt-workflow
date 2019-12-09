@@ -6,7 +6,7 @@
 
 <!-- App CSS code -->
 <link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/css/2.b0bb7f2c.chunk.css">
-<link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/css/main.9357dfd9.chunk.css">
+<link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/css/main.20883537.chunk.css">
 
 
 <!-- Custom annotation user interface is rendered here -->
@@ -158,8 +158,8 @@
 </script>
 
 <!-- App JavaScript code -->
-<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/2.d28443c5.chunk.js"></script>
-<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/main.75df9e83.chunk.js"></script>
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/2.52a69dd2.chunk.js"></script>
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/main.b2c3b023.chunk.js"></script>
 <script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/runtime-main.2371b4b9.js"></script>
 
 
@@ -174,12 +174,6 @@ ul {
 
 li {
   margin: 0;
-}
-
-blockquote {
-  font-family: courier;
-  /*background-color: #C0C0C0;*/
-  /*border-radius: 3px;*/
 }
 
 .example {
@@ -240,9 +234,7 @@ var instructionsViewed = {};
 for (i = 0; i < coll.length; i++) {
   instructionsViewed[coll[i].id] = coll[i].classList.contains("active");
   coll[i].addEventListener("click", function() {
-    // console.log(this.classList.contains("active"));
     this.classList.toggle("active");
-    // console.log(this.classList.contains("active"));
     var content = this.nextElementSibling;
     if (content.style.display === "block") {
       content.style.display = "none";

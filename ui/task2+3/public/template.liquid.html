@@ -7,7 +7,7 @@
 
 <!-- add links too react stylesheets here -->
 <link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/css/2.b0bb7f2c.chunk.css">
-<link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/css/main.9357dfd9.chunk.css">
+<link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/css/main.20883537.chunk.css">
 
 
 <!-- Custom annotation user interface is rendered here -->
@@ -109,7 +109,7 @@
     <p>
       The second question you need to answer is whether the elite criticism singles out certain wrong-doings, points of disagreement etc. or whether it is instead broadly generalizing, for example by asserting an overall lack of integrity, competence, piety, honesty etc.
       Criticisms of the first type are specific.
-      Criticisms of the first type are general.
+      Criticisms of the second type are general.
     </p>
 
     <p>The following post is an example of a <b>general</b> elite criticism:</p>
@@ -193,8 +193,8 @@
     };
 </script>
 
-<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/js/2.6d52f1f8.chunk.js"></script>
-<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/js/main.52792d6d.chunk.js"></script>
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/js/2.41dd7ce8.chunk.js"></script>
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/js/main.b5fc835d.chunk.js"></script>
 <script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task-2-and-3/web/static/js/runtime-main.9cd023e0.js"></script>
 
 
@@ -210,12 +210,6 @@ ul {
 
 li {
   margin: 0;
-}
-
-blockquote {
-  font-family: courier;
-  /*background-color: #C0C0C0;*/
-  /*border-radius: 3px;*/
 }
 
 .example {
@@ -275,9 +269,7 @@ var instructionsViewed = {};
 for (i = 0; i < coll.length; i++) {
   instructionsViewed[coll[i].id] = coll[i].classList.contains("active");
   coll[i].addEventListener("click", function() {
-    // console.log(this.classList.contains("active"));
     this.classList.toggle("active");
-    // console.log(this.classList.contains("active"));
     var content = this.nextElementSibling;
     if (content.style.display === "block") {
       content.style.display = "none";

@@ -4,17 +4,18 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ReactHtmlParser from 'react-html-parser'; 
 
 
-const TWEET = document.querySelector('#tweet').innerText.trim();
+// const TWEET = '#Petry: Merkel\u0027s stubbornness is hurting Germany &amp; Europe\\nhttps://t.co/7R3m0urvYp #AfD #Slowenien #Asylum chaos'
 // const TWEET = 'A Tweet'
-const METADATA = document.querySelector('#metadata').innerText.trim();
 // const METADATA = '{"key": "value"}'
-
-const INSTRUCTIONS = document.querySelector('#instructions').innerHTML;
 // const INSTRUCTIONS = '<h3>Instructions</h3>'
-const TASK1 = document.querySelector('#task1').innerHTML;
 // const TASK1 = '<h5>1. question</h5>'
-const TASK2 = document.querySelector('#task2').innerHTML;
 // const TASK2 = '<h5>2. question</h5>'
+
+const TWEET = document.querySelector('#tweet').innerText.trim();
+const METADATA = document.querySelector('#metadata').innerText.trim();
+const INSTRUCTIONS = document.querySelector('#instructions').innerHTML;
+const TASK1 = document.querySelector('#task1').innerHTML;
+const TASK2 = document.querySelector('#task2').innerHTML;
 
 const Card = ({ children }) => (
   <div
@@ -29,6 +30,8 @@ const Card = ({ children }) => (
     {children}
   </div>
 )
+
+let tweetLines = TWEET.split('\\n').map ((item, i) => <p key={i}>{ReactHtmlParser(item)}</p> );
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +49,7 @@ class App extends Component {
   handleInputChangeTask2(val) { this.setState({task2: val}); }
 
   handleNotes = e => { this.setState({ notes: e.target.value }); }
-
+  
   render() {
     return (
       <div style={{ padding: 10, fontFamily: 'sans-serif' }}>
@@ -60,7 +63,7 @@ class App extends Component {
         <Card>
           <div className="form-row justify-content-md-left">
             <div className="col">
-              <blockquote> {TWEET} </blockquote>
+              <blockquote> {tweetLines} </blockquote>
               <cite>posted on Twitter</cite>
             </div>
           </div>
