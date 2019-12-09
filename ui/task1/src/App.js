@@ -3,16 +3,16 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ReactHtmlParser from 'react-html-parser'; 
 
-const TWEET = '#Petry: Merkel\u0027s stubbornness is hurting Germany &amp; Europe\\nhttps://t.co/7R3m0urvYp #AfD #Slowenien #Asylum chaos'
-// const TWEET = "This is a test tweet without meaningful content"
-const METADATA = '{"key": "value"}'
-const INSTRUCTIONS = '<h3>Instructions</h3>'
-const TASK1 = '<h5>Question text</h5>'
+// const TWEET = '#Petry: Merkel\u0027s stubbornness is hurting Germany &amp; Europe\\nhttps://t.co/7R3m0urvYp #AfD #Slowenien #Asylum chaos'
+// // const TWEET = "This is a test tweet without meaningful content"
+// const METADATA = '{"key": "value"}'
+// const INSTRUCTIONS = '<h3>Instructions</h3>'
+// const TASK1 = '<h5>Question text</h5>'
 
-// const TWEET = document.querySelector('#tweet').innerText.trim();
-// const METADATA = document.querySelector('#metadata').innerText.trim();
-// const INSTRUCTIONS = document.querySelector('#instructions').innerHTML;
-// const TASK1 = document.querySelector('#task1').innerHTML;
+const TWEET = document.querySelector('#tweet').innerText.trim();
+const METADATA = document.querySelector('#metadata').innerText.trim();
+const INSTRUCTIONS = document.querySelector('#instructions').innerHTML;
+const TASK1 = document.querySelector('#task1').innerHTML;
 
 const Card = ({ children }) => (
   <div
