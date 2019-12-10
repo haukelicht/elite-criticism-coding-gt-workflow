@@ -1,0 +1,46 @@
+{
+    "LabelingJobName": "elite-criticism-task1-crowd-cf500-validation",
+    "LabelAttributeName": "annotations",
+    "InputConfig": { 
+        "DataAttributes": { 
+            "ContentClassifiers": ["FreeOfAdultContent", "FreeOfPersonallyIdentifiableInformation"]
+        },
+        "DataSource": { 
+            "S3DataSource": { 
+                "ManifestS3Uri": "s3://antielite-coding/rawdata/test/tweets_sample_500_orig_CF_3rd_task_example.manifest"
+            }
+        }
+    },
+    "OutputConfig": {
+        "S3OutputPath": "s3://antielite-coding/codings/"
+    },
+    "RoleArn": "arn:aws:iam::797896594204:role/service-role/AmazonSageMaker-ExecutionRole-20191030T191789",
+    "StoppingConditions": {
+        "MaxHumanLabeledObjectCount": 582,
+        "MaxPercentageOfInputDatasetLabeled": 100
+    },
+    "HumanTaskConfig": { 
+        "AnnotationConsolidationConfig": { 
+            "AnnotationConsolidationLambdaArn": "arn:aws:lambda:eu-central-1:797896594204:function:sam-gt-custom-lambdas-GtRecipeAnnotationConsolidat-172HT069Y76QP"
+        },
+        "MaxConcurrentTaskCount": 582,
+        "NumberOfHumanWorkersPerDataObject": 5,
+        "PreHumanTaskLambdaArn": "arn:aws:lambda:eu-central-1:797896594204:function:sam-gt-custom-lambdas-GtRecipePreHumanTaskFunction-5IB16LXDTGHT",
+        "PublicWorkforceTaskPrice": { 
+          "AmountInUsd": { 
+             "Cents": 2,
+             "Dollars": 0,
+             "TenthFractionsOfACent": 4
+          }
+        },
+        "TaskAvailabilityLifetimeInSeconds": 43200,
+        "TaskDescription": "Reading a sample of social media posts created by politicians, your task is to indicate whether or not a post criticizes the elite.",
+        "TaskKeywords": ["text classification", "social media posts", "classifying elite criticism"],
+        "TaskTimeLimitInSeconds": 3600,
+        "TaskTitle": "Classifying elite criticism in social media posts",
+        "UiConfig": { 
+            "UiTemplateS3Uri": "s3://antielite-coding/ui/task1/web/task1.liquid.html"
+        },
+        "WorkteamArn": "arn:aws:sagemaker:eu-central-1:394669845002:workteam/public-crowd/default"
+    }
+}

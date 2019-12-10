@@ -8,6 +8,7 @@ job_overview_and_exp_costs.xlsx
 *.DS_Store
 *.py[co]
 *packaged.yml
+*LabelingJobArn.json
 
 # folders
 s3/
