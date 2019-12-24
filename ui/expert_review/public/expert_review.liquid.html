@@ -1,0 +1,253 @@
+<script>
+  var startTime = new Date();
+</script>
+
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- App CSS code -->
+<link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/css/2.b0bb7f2c.chunk.css">
+<link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/css/main.20883537.chunk.css">
+
+
+<!-- Custom annotation user interface is rendered here -->
+<div id="root"></div>
+
+<!-- submit button is rendered here -->
+<div class="card" id="controls">
+  <center>
+    <crowd-button id="submitButton">Submit</crowd-button>
+  </center>
+</div>
+
+<!-- hidden document elements queried by App -->
+<div id='tweet' style="display: none;">
+  {{ task.input.text }}
+  <!-- This is a moderately long tweet with no content at all, used only for local development purposes -->
+</div>
+
+<div id="labels" style="display: none;">
+  {{ task.input.labels }}
+  <!-- {"group_1": {"task1": "yes", "task2": "implicit", "task3": "general"}, "group_2": {"task1": "no"}} -->
+</div>
+
+
+<div id="metadata" style="display: none;">
+  {{ task.input.metadata }}
+  <!-- {"key": "value"} -->
+</div>
+
+<div id="instructions" style="display: none;">
+  <div id="instructions_overview">
+    <h2>Classifying elite criticism in social media posts</h2>
+    </br>
+    <p>
+      <b>Our goal</b>: 
+      We want to find out how political parties criticize the elite in social media posts.
+    </br>
+      <b>Your task</b>: 
+      Indicate whether or not a post contains or approves of an implicit or explicit criticism of the elite.
+    </p>
+  </div>
+
+  <button type="button" id="instructions_short" class="collapsible active">Short instructions: How to proceed with labeling posts</button>
+  <div class="content" id="instructions_short" style="display: block;">
+    <ol>
+      <li>Carefully <b>review the examples and clarifications</b> provided below.</li>
+      <li>Carefully <b>read the post</b> displayed in the second panel below.
+      <li>
+        <b>Select the answer category</b> that applies the most:
+        <ul>
+          <li>&laquo;Yes&raquo; if the post either approves of or itself contains a criticism of the elite</li>
+          <li>&laquo;No&raquo; if the post does not criticize the elite</li>
+          <li>&laquo;Cannot answer&raquo; if you do not understand the content of the post</li>
+        </ul>
+      </li>
+      <li>In case you have a comment, enter it in the free text area of the last panel (max. 500 characters).</li>
+      <li><b>Click &laquo;Submit&raquo;</b> (the button below the comments panels) to confirm your selection and submit your answer.</li>
+    </ol>
+    <p>
+    Once you have submitted an answer, a new post will appear.
+    Repeat steps 2 to 5 until you are done with classifying all posts.
+    </p>
+  </div>
+  
+  <button type="button" id="definition_elite" class="collapsible">What we mean by &laquo;the elite&raquo;</button>
+  <div class="content" id="definition_elite">
+    <p>By elite we generally mean <b>individuals, groups or organizations that wield more influence and power than most other citizens or groups in society</b>, such as in politics, the economy, the media, religion or the state.</p>
+    <p>Concrete examples are:</p>
+    <ul>
+      <li>important political parties, political representatives, influential social movements, or international organizations (for example the <em>United Nations</em>, the <em>European Union</em>, or the <em>International Monetary Fund</em>, etc.)</li>
+      <li>large (multinational) companies, their bosses and owners, as well as workers organizations</li>
+      <li>journalists, major TV channels, and big news outlets</li>
+      <li>churches and other religious organizations</li>
+      <li>bureaucrats and state agencies</li>
+    </ul>
+  </div>
+
+  <button type="button" id="positive_examples" class="collapsible">Implicit <em>vs</em> explicit elite criticism: Clarifications and examples</button>
+  <div class="content" id="positive_examples">
+    <p>The following two posts contain <b><em>explicit</em> criticism</b> of 'rich people' and the government, and, somewhat more abstract, of 'those in power'.</p>
+    <blockquote class="example">Tax havens mean that there are rich people who will be able to avoid paying for our hospitals, our schools, our roads, our public services with the complicity of the Liberal government!</blockquote>
+    <blockquote class="example">Given the cancellation of this much needed Primary Care Centre, the Drimnagh community cannot be expected to trust those in power if all their promises are repeatedly being abandoned. ...</blockquote>
+    </br>
+    <p>In contrast to the above posts, the criticism in the following two posts is <em><b>implicit</b></em>:</p>
+    <blockquote class="example">Withholding tax, vain reform without an overhaul of the IRPP. New complexities and constraints to try to anesthetize taxpayers ...</blockquote>
+    <blockquote class="example">96% of Spaniards believe that corruption is very high (survey @el_pais). The other 4% must be those who defend #partitocracia vs. democracy</blockquote>
+    <!-- <p>The implicit target of this criticism is the government and its legislators and bureaucracy. This can be inferred from it suggesting that the 'new complexities and constraints' of the said tax reform were intentionally designed to 'anesthetize taxpayers', or in other words, sedating citizens at large into a state of ignorance.</p> -->
+  </div>
+
+  <button type="button" id="negative_examples" class="collapsible">Examples of posts that are <em>not</em> elite criticism</button>
+  <div class="content" id="negative_examples">
+    <p>The types of posts that lack any type of implicit or explicit elite criticism is long. Some concrete cases with examples are:<p>
+    <ul>
+      <!-- <li><em>specific policy-related criticism </em>(e.g. &quot;Driving Greece into insolvency and out of control of the Euro would be a poison to Greece and to Europe as a whole. ...&quot;) </li> -->
+      <li>policy-related appeals or policy proposals (e.g. &quot;My current initiative to facilitate business: Stop the excess of penalties for businesses. ...&quot;)</li>
+      <li>self-praise (e.g. &quot;With #EenHeleGoedeMorgen we work every day on a country that we want to pass on. #teamCDA ...&quot;)</li>
+      <li>positive appeals to social groups (e.g. &quot;The elderly are the victims of the pension policy. According to calculations by @EIBnl, it is precisely the young people who will benefit in the future. 50PLUS has introduced own-initiative law to prevent discounts on pensions! ...&quot;</li>
+      <li>&apos;service posts&apos; and other trivia (e.g. &quot;Careful on the roads tonight folks. Massive downpours in some areas. #drivesafe&quot;)</li>
+    </ul>
+  </div>
+</div>
+
+<div id="task1" style="display: none;">
+  <h5>Does this post contain or approve of an implicit or explicit criticism of the elite?<h5>
+</div>
+
+<!-- the "crowd-form" -->
+<crowd-form>
+  <input name="annotations" id="annotations" type="hidden">
+
+  <!-- Prevent crowd-form from creating its own button -->
+  <crowd-button form-action="submit" style="display: none;"></crowd-button>
+</crowd-form>
+
+<!-- rewrite of submit function -->
+<script>
+  var startTime = new Date();
+
+  // sets value of 'annotations' element to parsed return value of 'pre'-tag of custom UI
+  document.querySelector('crowd-form').onsubmit = function() {
+    var annotations = JSON.parse(document.querySelector('pre').innerText)
+        
+    var instructionsActive = { };
+    for (i = 0; i < coll.length; i++) {
+      if (! instructionsActive.hasOwnProperty(coll[i].id)) {
+        instructionsActive[coll[i].id] = coll[i].classList.contains("active");
+      };
+    };
+
+    annotations.instructions = {};
+    for (key in instructionsActive) {
+      annotations.instructions[key] = {"viewed": instructionsViewed[key], "active": instructionsActive[key]};
+    };
+
+    var endTime = new Date();
+    
+    annotations.log = {
+      "start_time": startTime.toISOString(),
+      "end_time": endTime.toISOString(),
+      "duration": (endTime-startTime)/1000
+    }
+    document.getElementById('annotations').value = JSON.stringify(annotations);
+  };
+
+  // calls above function on click of submit button
+  document.getElementById('submitButton').onclick = function() {
+    var annotations = JSON.parse(document.querySelector('pre').innerText);
+
+    if ('task1' in annotations) {
+      document.querySelector('crowd-form').submit();  
+    } else {
+      window.alert("Answer to first question required!");  
+    };
+  };
+</script>
+
+<!-- App JavaScript code -->
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/2.52a69dd2.chunk.js"></script>
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/main.12934864.chunk.js"></script>
+<script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/task1/web/static/js/runtime-main.2371b4b9.js"></script>
+
+
+<style>
+ol, ul {
+  padding-inline-start: 24px;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+li {
+  margin: 0;
+}
+
+.example {
+  font-size: smaller;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,.3); 
+  border-radius: 10px; 
+  margin: -9px 16px 24px 16px;
+  max-width: 1000; 
+  padding: 16;
+}
+
+/* Source: https://www.w3schools.com/howto/howto_js_collapsible.asp */
+.collapsible {
+  background-color: #DCDCDC;
+  color: black;
+  cursor: pointer;
+  padding: 3 0 3 9px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 9px;
+  border-radius: 3px;
+}
+
+.collapsible:hover {
+  background-color: #BEBEBE;/*#555;
+  /*color: #000000;*/
+  /*box-shadow: 0 2px 4px rgba(0,0,0,.1);*/
+  /*font-style: bold;*/
+}
+
+.content {
+  padding: 0 12px;
+  padding-top: 6px;
+  display: none;
+  overflow: hidden;
+  /*font-size: smaller;*/
+  background-color: #f1f1f1;
+  /*box-shadow: 0 2px 4px rgba(0,0,0,.1);*/
+  border-radius: 3px;
+}
+
+</style>
+
+<script>
+// Source: https://www.w3schools.com/howto/howto_js_collapsible.asp
+var coll = document.getElementsByClassName("collapsible");
+var i;
+var instructionsViewed = {};
+for (i = 0; i < coll.length; i++) {
+  instructionsViewed[coll[i].id] = coll[i].classList.contains("active");
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      instructionsViewed[this.id] = true;
+      content.style.display = "block";
+    }
+  });
+}
+</script>

@@ -13,6 +13,7 @@ job_overview_and_exp_costs.xlsx
 # folders
 s3/
 sam/
+*deprecated/
 *node_modules/
 *build/
 *.idea/

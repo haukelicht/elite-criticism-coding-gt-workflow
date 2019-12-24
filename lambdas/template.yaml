@@ -11,20 +11,14 @@ Resources:
   GtRecipePreHumanTaskFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://my-sam-artifacts-test-v001/ce7effafa4039a36c400d86d09047203
+      CodeUri: s3://my-sam-artifacts-test-v001/0c8f71416d53afca3eafd4c7a5f9b4f8
       Handler: pre_human_task_lambda.lambda_handler
       Runtime: python3.6
   GtRecipeAnnotationConsolidationFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://my-sam-artifacts-test-v001/ce7effafa4039a36c400d86d09047203
+      CodeUri: s3://my-sam-artifacts-test-v001/0c8f71416d53afca3eafd4c7a5f9b4f8
       Handler: annotation_consolidation_lambda.lambda_handler
-      Runtime: python3.6
-  GtRecipeJobGetterFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: s3://my-sam-artifacts-test-v001/ce7effafa4039a36c400d86d09047203
-      Handler: job_getter_lambda.lambda_handler
       Runtime: python3.6
 Outputs:
   GtRecipePreHumanTaskFunction:
@@ -45,17 +39,4 @@ Outputs:
     Value:
       Fn::GetAtt:
       - GtRecipeAnnotationConsolidationFunction
-      - Arn
-  GtRecipeJobGetterFunction:
-    Description: SageMaker GroundTruth Annotation Consolidation (post-processing)
-      Lambda.
-    Value:
-      Fn::GetAtt:
-      - GtRecipeAnnotationConsolidationFunction
-      - Arn
-  GtRecipeJobGetterIamRole:
-    Description: Implicit IAM Role created for GtRecipeJobGetterFunction
-    Value:
-      Fn::GetAtt:
-      - GtRecipeJobGetterFunctionRole
       - Arn

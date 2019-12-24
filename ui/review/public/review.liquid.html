@@ -1,0 +1,255 @@
+<html lang="en">
+  <head>
+    <script>var startTime = new Date();</script>
+    </script>
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+    <!-- App CSS code -->
+    <!-- <link rel="stylesheet" href="../build/static/css/2.b0bb7f2c.chunk.css"> -->
+    <link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/review/web/static/css/2.b0bb7f2c.chunk.css">
+    <!-- <link rel="stylesheet" href="../build/static/css/main.0bc073c3.chunk.css"> -->
+    <link rel="stylesheet" href="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/review/web/static/css/main.0bc073c3.chunk.css">
+  </head>
+  <body>
+      
+
+    <!-- Custom annotation user interface is rendered here -->
+    <div id="root"></div>
+
+    <!-- submit button is rendered here -->
+    <div 
+      class="card" 
+      id="controls" 
+      style="padding: 10px; background-color: rgba(0,0,0,.03);"
+    >
+      <center>
+        <crowd-button id="submitButton" style="border-radius: 10px;">Submit</crowd-button>
+      </center>
+    </div>
+
+    <!-- hidden document elements queried by App -->
+    <div id='tweet' style="display: none;">
+      <!-- {{ task.input.text }} -->
+      This is a moderately long tweet with no content at all, used only for local development purposes
+    </div>
+
+    <div id="labels" style="display: none;">
+      <!-- {{ task.input.labels }} -->
+      {"group_1": {"task1": "yes", "task2": "implicit", "task3": "general"}, "group_2": {"task1": "yes"}}
+    </div>
+    <div id="metadata" style="display: none;">
+      <!-- {{ task.input.labels }} -->
+      {"key1": "value", "key2": ["a", "b"], "key3": {"a": 1, "b": true}}
+    </div>
+
+    <div id="tasks" style="display: none;">
+      <div id="task1">
+        Does this post contain or approve of an implicit or explicit criticism of the elite?
+      </div>
+      <div id="task2">
+        Is it made explicit what actor(s) is/are being criticized?
+      </div>
+      <div id="task3">
+        Is the criticism itself rather specific or rather general?
+      </div>
+      <div id="answer_categories">
+        {"task1": ["yes", "no", "cannot-answer"], "task2": ["explicit", "implicit", "cannot-answer", "no-elite-criticism"], "task3": ["specific", "general", "cannot-answer", "no-elite-criticism"]}
+      </div>
+    </div>
+
+    <div id="instructions" style="display: none;">
+      <div class="instruction" id="task_description">
+        <h5>Your task<h5>
+        <content>
+          <p>
+            For the post displayed in the top-right panel, review the labels for questions 1&ndash;3.
+          </p>
+          <p>
+            Please click on <a href="#task_instructions">Instructions</a> and go through the instructions and examples that are provided there to fully understand what you are asked to do.
+          </p>
+        </content>
+      </div>
+      <div class="instruction" id="task_instructions">
+        <h5>Instructions</h5>
+        <content>
+          <p>
+            Please go through the links listed below in order to familiarize yourself with important clarifications and examples: 
+          </p>
+        </content>
+      </div>
+      <div class="instruction" id="task_background">
+        <h5>Background</h5>
+        <content>
+          <p>
+            We have asked two different groups of coders to judge a number of  social media posts regarding whether or not they criticize the elite (and if so, how).
+            For each post, up to three questions had to be answered.
+          </p>
+          <p>
+            We have aggregated these judgments for each post, each question, and each group into a set of labels.
+            For a given posts these labels may disagree due to differences between groups.
+          </p>
+        </content>
+      </div>
+      
+
+      <div class="example" id="instructions_short">
+        <header>How to review labels</header>
+        <content>
+          <ol>
+            <li>Carefully <b>read the post</b> displayed in the top-right panel.
+            </li>
+            <li>In case you have a comment, enter it in the free text area (max. 500 characters).</li>
+            <li>
+              Click through questions 1&ndash;3 in the bottom-right panel. For each question:
+              <ol>
+                <li>Read the question coders were asked to answer.</li>
+                <li>Review their judgments (labels):
+                  <ul>
+                    <li>
+                      If the <b>labels disagree</b>,
+                      click on the label that is correct given the question 
+                      <em>OR</em> select &lsquo;Neither of both&rsquo; if you think that both labels are incorrect and answer the follow-up question.
+                    </li>
+                    <li>
+                      If there is <b>only one label</b>, 
+                      click &lsquo;Yes&rsquo; if you agree with the label <em>OR</em> select &lsquo;No&rsquo; if you think the label is incorrect and answer the follow-up question.</li>
+                    </li>
+                  </ul>
+                </li>
+              </ol>
+            </li>
+            <li>When you have completed the review for each set of labels, <b>click &laquo;Submit&raquo;</b> to confirm your selections and submit your answer.</li>
+          </ol>
+          <p>
+            Once you have submitted an answer, a new post will appear.
+            Repeat steps 2 to 4 until you are done with reviewing labels for all posts.
+          </p>
+        </content>
+      </div>
+      
+      <div class="example" id="definition_elite">
+        <header>What we mean by &laquo;the elite&raquo;</header>
+        <content>
+          <p>By elite we generally mean <b>individuals, groups or organizations that wield more influence and power than most other citizens or groups in society</b>, such as in politics, the economy, the media, religion or the state.</p>
+          <p>Concrete examples are:</p>
+          <ul>
+            <li>important political parties, political representatives, influential social movements, or international organizations (for example the <em>United Nations</em>, the <em>European Union</em>, or the <em>International Monetary Fund</em>, etc.)</li>
+            <li>large (multinational) companies, their bosses and owners, as well as workers organizations</li>
+            <li>journalists, major TV channels, and big news outlets</li>
+            <li>churches and other religious organizations</li>
+            <li>bureaucrats and state agencies</li>
+          </ul>
+        </content>
+      </div>
+
+      <div class="example" id="example_task1">
+        <header>Examples of implicit <em>vs</em> explicit elite criticism</header>
+        <content>
+          <p>The following two posts contain <b><em>explicit</em> criticism</b> of &lsquo;rich people&rsquo; and the government, and, somewhat more abstract, of &lsquo;those in power&rsquo;.</p>
+          <blockquote><p class="blockquote-text small">Tax havens mean that there are rich people who will be able to avoid paying for our hospitals, our schools, our roads, our public services with the complicity of the Liberal government!</p></blockquote>
+          <blockquote><p class="blockquote-text small">Given the cancellation of this much needed Primary Care Centre, the Drimnagh community cannot be expected to trust those in power if all their promises are repeatedly being abandoned. ...</p></blockquote>
+          <p>In contrast to the above posts, the criticism in the following two posts is <em><b>implicit</b></em>:</p>
+          <blockquote><p class="blockquote-text small">Withholding tax, vain reform without an overhaul of the IRPP. New complexities and constraints to try to anesthetize taxpayers ...</p></blockquote>
+          <blockquote><p class="blockquote-text small">96% of Spaniards believe that corruption is very high (survey @el_pais). The other 4% must be those who defend #partitocracia vs. democracy</p></blockquote>
+          <!-- <p>The implicit target of this criticism is the government and its legislators and bureaucracy. This can be inferred from it suggesting that the 'new complexities and constraints' of the said tax reform were intentionally designed to 'anesthetize taxpayers', or in other words, sedating citizens at large into a state of ignorance.</p> -->
+        </content>
+      </div>
+      <div class="example" id="examples_task2">
+        <header>Examples of general <em>vs</em> specific criticism</header>
+        <content>
+          <p>
+            To answer question 3, you need to assess whether the elite criticism singles out certain wrong-doings, points of disagreement etc. <em>OR</em> whether it is instead broadly generalizing, for example by asserting an overall lack of integrity, competence, piety, honesty etc.
+            Criticisms of the first type are <em>specific</em>.
+            Criticisms of the second type are <em>general</em>.
+          </p>
+
+          <p>The following post is an example of a <b>general</b> elite criticism:</p>
+
+          <blockquote><p class="blockquote-text small">
+            ... the @Popular is not only a structurally corrupt party, tb is structurally authoritarian and leads us towards the biggest rights cut in democracy!
+          </p></blockquote>
+          
+          <p>
+            In contrast, the criticisms of the next two posts are <b>specific</b>:
+            The first post specifically criticizes &lsquo;the State's&rsquo; failure to appropriately regulate competition.
+            This second post criticizes &lsquo;the PD&rsquo; and &lsquo;the left's&rsquo; immigration policy.
+          </p>
+
+          <blockquote><p class="blockquote-text small">
+            I join the fight of @ETFranchise against the unfair competition of the #grandedistribution which destroys our shops downtown with the complicity of the State! Millions of m2 of illegal sales area! This must stop. #EnTouteFranchise ...
+          </p></blockquote>
+          
+          <blockquote><p class="blockquote-text small">
+            HOW DOES THE PD TALK TO STILL RECEPTION AND IMMIGRATION? The left has opened the gates wide, making reception an unmanageable phenomenon. @GiorgioSilli explains to Piero Fassino the errors of the Democratic Party on immigration. ...
+          </p></blockquote>
+          
+        </content>
+      </div>
+
+      <div class="example" id="negative_examples">
+        <header>Examples of posts that are <em>not</em> elite criticism</header>
+        <content>
+          <p>The types of posts that lack any type of implicit or explicit elite criticism is long. Some concrete cases with examples are:<p>
+          <ul>
+            <!-- <li><em>specific policy-related criticism </em>(e.g. &lsquo;Driving Greece into insolvency and out of control of the Euro would be a poison to Greece and to Europe as a whole. ...&rsquo;) </li> -->
+            <li>policy-related appeals or policy proposals (e.g. &lsquo;My current initiative to facilitate business: Stop the excess of penalties for businesses. ...&rsquo;)</li>
+            <li>self-praise (e.g. &lsquo;With #EenHeleGoedeMorgen we work every day on a country that we want to pass on. #teamCDA ...&rsquo;)</li>
+            <li>positive appeals to social groups (e.g. &lsquo;The elderly are the victims of the pension policy. According to calculations by @EIBnl, it is precisely the young people who will benefit in the future. 50PLUS has introduced own-initiative law to prevent discounts on pensions! ...&rsquo;</li>
+            <li>&ldquo;service posts&rdquo; and other trivia (e.g. &lsquo;Careful on the roads tonight folks. Massive downpours in some areas. #drivesafe&rsquo;)</li>
+          </ul>
+        </content>
+      </div>
+    </div>
+
+    <!-- the "crowd-form" -->
+    <crowd-form>
+      <input name="annotations" id="annotations" type="hidden">
+
+      <!-- Prevent crowd-form from creating its own button -->
+      <crowd-button form-action="submit" style="display: none;"></crowd-button>
+    </crowd-form>
+
+    <!-- rewrite of submit function -->
+    <script>
+      var startTime = new Date();
+
+      // sets value of 'annotations' element to parsed return value of 'pre'-tag of custom UI
+      document.querySelector('crowd-form').onsubmit = function() {
+        var annotations = JSON.parse(document.querySelector('pre').innerText)
+            
+        var endTime = new Date();
+        
+        annotations.log = {
+          "start_time": startTime.toISOString(),
+          "end_time": endTime.toISOString(),
+          "duration": (endTime-startTime)/1000
+        };
+
+        document.getElementById('annotations').value = JSON.stringify(annotations);
+      };
+
+      // calls above function on click of submit button
+      document.getElementById('submitButton').onclick = function() {
+        var annotations = JSON.parse(document.querySelector('pre').innerText);
+
+        // document.querySelector('crowd-form').submit(); 
+        if (
+          annotations.task1 === null || 
+          annotations.task2 === null || 
+          annotations.task3 === null
+        ) {
+          window.alert("Please complete all tasks before submitting!");  
+        } else {
+          document.querySelector('crowd-form').submit();  
+        };
+      };
+    </script>
+    <!-- App JavaScript code -->
+    <!-- <script src="../build/static/js/2.0139ed80.chunk.js"></script> -->
+    <script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/review/web/static/js/2.0139ed80.chunk.js"></script>
+    <!-- <script src="../build/static/js/main.f7db3705.chunk.js"></script> -->
+    <script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/review/web/static/js/main.f7db3705.chunk.js"></script>
+    <!-- <script src="../build/static/js/runtime-main.b0b617c1.js"></script> -->
+    <script src="https://antielite-coding.s3.eu-central-1.amazonaws.com/ui/review/web/static/js/runtime-main.b0b617c1.js"></script>
+  </body>
+</html>
+
